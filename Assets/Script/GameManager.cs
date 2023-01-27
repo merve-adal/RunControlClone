@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Hedef;
-    public GameObject PrefabKarakter;
+    
     public GameObject DogmaNoktasi;
     public GameObject VarisNoktasi;
+    public int AnlikKarakterSayisi = 1;
 
     public List<GameObject> Karakterler;
 
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
                 {
                     item.transform.position = DogmaNoktasi.transform.position;
                     item.SetActive(true);
+                    AnlikKarakterSayisi++;
                     break;
                 }
             }
