@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Karakter : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameManager _GameManager;
+
    private void FixedUpdate()
     {
         transform.Translate(Vector3.forward * .5f * Time.deltaTime);
     }
 
 
-    // Update is called once per frame
+    
     void Update()
     {
        if(Input.GetKey(KeyCode.Mouse0))
@@ -30,4 +31,13 @@ public class Karakter : MonoBehaviour
 
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name =="x2" || other.name == "+3")       
+            _GameManager.AdamYonetimi(other.name,other.transform);
+            
+
+    }
 }
+
