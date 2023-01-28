@@ -25,7 +25,7 @@ public class Alt_karakter : MonoBehaviour
     {
         if (other.CompareTag("igneliKutu"))
         {
-            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().AnlikKarakterSayisi--;
+            GameManager.AnlikKarakterSayisi--;
             gameObject.SetActive(false);
         }
     }
