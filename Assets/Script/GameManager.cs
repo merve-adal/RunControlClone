@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject VarisNoktasi;
     public static int AnlikKarakterSayisi = 1;
     public List<GameObject> Karakterler;
+    public List<GameObject> OlusmaEfektleri;
+    public List<GameObject> YokOlmaEfektleri;
 
     void Start()
     {
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-      
+
     }
 
     public void AdamYonetimi(string islemturu, int GelenSayi, Transform Pozisyon)
@@ -27,21 +29,37 @@ public class GameManager : MonoBehaviour
         switch (islemturu)
         {
             case "Carpma":
-                Matematiksel_islemler.Carpma(GelenSayi, Karakterler, Pozisyon);
+                Matematiksel_islemler.Carpma(GelenSayi, Karakterler, Pozisyon, OlusmaEfektleri);
                 break;
 
             case "Toplama":
-                Matematiksel_islemler.Toplama(GelenSayi, Karakterler, Pozisyon);
+                Matematiksel_islemler.Toplama(GelenSayi, Karakterler, Pozisyon, OlusmaEfektleri);
                 break;
 
 
             case "Cikartma":
-                Matematiksel_islemler.Cikartma(GelenSayi, Karakterler);
+                Matematiksel_islemler.Cikartma(GelenSayi, Karakterler, YokOlmaEfektleri);
                 break;
 
             case "Bolme":
-                Matematiksel_islemler.Bolme(GelenSayi, Karakterler);
+                Matematiksel_islemler.Bolme(GelenSayi, Karakterler, YokOlmaEfektleri);
                 break;
+        }
+    }
+
+    public void YokOlmaEfektiOlustur(Vector3 Pozisyon)
+    {
+        foreach (var item in YokOlmaEfektleri)
+        {
+            if (!item.activeInHierarchy)
+            {
+
+                item.SetActive(true);
+                item.transform.position = Pozisyon;
+                item.GetComponent<ParticleSystem>().Play();
+                AnlikKarakterSayisi--;
+                break;
+            }
         }
     }
 }
