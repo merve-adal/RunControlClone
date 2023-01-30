@@ -10,6 +10,7 @@ TagManager:
   - Toplama
   - Cikartma
   - Bolme
+  - Testere
   layers:
   - Default
   - TransparentFX
