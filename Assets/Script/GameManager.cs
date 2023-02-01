@@ -5,13 +5,12 @@ using Merve;
 
 public class GameManager : MonoBehaviour
 {
-
-
     public GameObject VarisNoktasi;
     public static int AnlikKarakterSayisi = 1;
     public List<GameObject> Karakterler;
     public List<GameObject> OlusmaEfektleri;
     public List<GameObject> YokOlmaEfektleri;
+    public List<GameObject> AdamLekesiEfektleri;
 
     void Start()
     {
@@ -47,18 +46,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void YokOlmaEfektiOlustur(Vector3 Pozisyon)
+    public void YokOlmaEfektiOlustur(Vector3 Pozisyon,bool Balyoz=false)
     {
         foreach (var item in YokOlmaEfektleri)
         {
             if (!item.activeInHierarchy)
             {
-
                 item.SetActive(true);
                 item.transform.position = Pozisyon;
                 item.GetComponent<ParticleSystem>().Play();
                 AnlikKarakterSayisi--;
                 break;
+            }
+        }
+
+        if(Balyoz)
+        {
+            Vector3 yeniPoz = new Vector3(Pozisyon.x, .005f, Pozisyon.z);
+            foreach (var item in AdamLekesiEfektleri)
+            {
+                if (!item.activeInHierarchy)
+                {
+                    item.SetActive(true);
+                    item.transform.position = yeniPoz;
+                    break;
+                }
             }
         }
     }
