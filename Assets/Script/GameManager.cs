@@ -12,11 +12,33 @@ public class GameManager : MonoBehaviour
     public List<GameObject> YokOlmaEfektleri;
     public List<GameObject> AdamLekesiEfektleri;
 
+    [Header("LEVEL VERÝLERÝ")]
+    public List<GameObject> Dusmanlar;
+    public int KacDusmanOlsun;
+
     void Start()
     {
-
+        DusmanlariOlustur();
     }
 
+    public void DusmanlariOlustur()
+    {
+        for (int i = 0; i < KacDusmanOlsun; i++)
+        {
+            Dusmanlar[i].SetActive(true);
+        }
+    }
+
+    public void DusmanlariTetikle()
+    {
+        foreach (var item in Dusmanlar)
+        {
+            if(item.activeInHierarchy)
+            {
+                item.GetComponent<Dusman>().AnimasyonTetikle();
+            }
+        }
+    }
 
     void Update()
     {
