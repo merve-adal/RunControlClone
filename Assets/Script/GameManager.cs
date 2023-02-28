@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int KacDusmanOlsun;
     public GameObject _AnaKarakter;
     public bool OyunBittimi;
+    bool SonaGeldikmi;
 
     void Start()
     {
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
                 item.GetComponent<Dusman>().AnimasyonTetikle();
             }
         }
+        SonaGeldikmi = true;
+        SavasDurumu();
     }
 
     void Update()
@@ -48,36 +51,40 @@ public class GameManager : MonoBehaviour
    
     void SavasDurumu()
     {
-        if (AnlikKarakterSayisi == 1 || KacDusmanOlsun==0)
+        if (SonaGeldikmi)
         {
-            OyunBittimi = true;
-            foreach (var item in Dusmanlar)
+            if (AnlikKarakterSayisi == 1 || KacDusmanOlsun == 0)
             {
-                if (item.activeInHierarchy)
+                OyunBittimi = true;
+                foreach (var item in Dusmanlar)
                 {
-                    item.GetComponent<Animator>().SetBool("Saldir", false);
+                    if (item.activeInHierarchy)
+                    {
+                        item.GetComponent<Animator>().SetBool("Saldir", false);
+                    }
                 }
-            }
 
-            foreach (var item in Karakterler)
-            {
-                if (item.activeInHierarchy)
+                foreach (var item in Karakterler)
                 {
-                    item.GetComponent<Animator>().SetBool("Saldir", false);
+                    if (item.activeInHierarchy)
+                    {
+                        item.GetComponent<Animator>().SetBool("Saldir", false);
+                    }
                 }
+
+                _AnaKarakter.GetComponent<Animator>().SetBool("Saldir", false);
+
+                if (AnlikKarakterSayisi < KacDusmanOlsun || AnlikKarakterSayisi == KacDusmanOlsun)
+                {
+                    Debug.Log("Kaybettin");
+                }
+                else
+                {
+                    Debug.Log("Kazandýn");
+                }
+
             }
-
-            _AnaKarakter.GetComponent<Animator>().SetBool("Saldir", false);
-
-            if (AnlikKarakterSayisi < KacDusmanOlsun || AnlikKarakterSayisi == KacDusmanOlsun)
-            {
-                Debug.Log("Kaybettin");
-            }else
-            {
-                Debug.Log("Kazandýn");
-            }
-
-        }
+        }    
     }
 
     public void AdamYonetimi(string islemturu, int GelenSayi, Transform Pozisyon)

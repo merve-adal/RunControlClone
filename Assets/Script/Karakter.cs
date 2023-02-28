@@ -12,7 +12,7 @@ public class Karakter : MonoBehaviour
     private void FixedUpdate()
     {
         if (!SonaGeldikmi)
-        transform.Translate(Vector3.forward * .5f * Time.deltaTime);
+            transform.Translate(Vector3.forward * .5f * Time.deltaTime);
     }
 
 
@@ -47,13 +47,25 @@ public class Karakter : MonoBehaviour
         if (other.CompareTag("Carpma") || other.CompareTag("Toplama") || other.CompareTag("Cikartma") || other.CompareTag("Bolme"))
         {
             int sayi = int.Parse(other.name);
-            _GameManager.AdamYonetimi(other.tag, sayi, other.transform);      
-        }  
+            _GameManager.AdamYonetimi(other.tag, sayi, other.transform);
+        }
         else if (other.CompareTag("Sontetikleyici"))
         {
             _Kamera.SonaGeldikmi = true;
             _GameManager.DusmanlariTetikle();
             SonaGeldikmi = true;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Direk") || collision.gameObject.CompareTag("igneliKutu") || collision.gameObject.CompareTag("Pervaneigneler"))
+        {
+            if (transform.position.x > 0)
+                transform.position = new Vector3(transform.position.x - .2f, transform.position.y, transform.position.z);
+            else
+                transform.position = new Vector3(transform.position.x + .2f, transform.position.y, transform.position.z);
+
         }
     }
 }
