@@ -5,7 +5,7 @@ using UnityEngine;
 public class Karakter : MonoBehaviour
 {
     public GameManager _GameManager;
-    public GameObject _Kamera;
+    public Kamera _Kamera;
     public bool SonaGeldikmi;
     public GameObject Gidecegiyer;
 
@@ -51,7 +51,7 @@ public class Karakter : MonoBehaviour
         }  
         else if (other.CompareTag("Sontetikleyici"))
         {
-            _Kamera.GetComponent<Kamera>().SonaGeldikmi = true;
+            _Kamera.SonaGeldikmi = true;
             _GameManager.DusmanlariTetikle();
             SonaGeldikmi = true;
         }
