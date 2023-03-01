@@ -23,6 +23,7 @@ namespace Merve
                                 item2.SetActive(true);
                                 item2.transform.position = Pozisyon.position;
                                 item2.GetComponent<ParticleSystem>().Play();
+                                item2.GetComponent<AudioSource>().Play();
                                 break;
                             }
                         }
@@ -60,6 +61,7 @@ namespace Merve
                                 item2.SetActive(true);
                                 item2.transform.position = Pozisyon.position;
                                 item2.GetComponent<ParticleSystem>().Play();
+                                item2.GetComponent<AudioSource>().Play();
                                 break;
                             }
                         }
@@ -96,6 +98,7 @@ namespace Merve
                             item2.SetActive(true);
                             item2.transform.position = yeniPoz;
                             item2.GetComponent<ParticleSystem>().Play();
+                            item2.GetComponent<AudioSource>().Play();
                             break;
                         }
                     }
@@ -124,6 +127,7 @@ namespace Merve
                                     item2.SetActive(true);
                                     item2.transform.position = yeniPoz;
                                     item2.GetComponent<ParticleSystem>().Play();
+                                    item2.GetComponent<AudioSource>().Play();
                                     break;
                                 }
                             }
@@ -160,6 +164,7 @@ namespace Merve
                             item2.SetActive(true);
                             item2.transform.position = yeniPoz;
                             item2.GetComponent<ParticleSystem>().Play();
+                            item2.GetComponent<AudioSource>().Play();
                             break;
                         }
                     }
@@ -189,6 +194,7 @@ namespace Merve
                                     item2.SetActive(true);
                                     item2.transform.position = yeniPoz;
                                     item2.GetComponent<ParticleSystem>().Play();
+                                    item2.GetComponent<AudioSource>().Play();
                                     break;
                                 }
                             }
