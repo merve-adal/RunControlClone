@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Karakter : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Karakter : MonoBehaviour
     public Kamera _Kamera;
     public bool SonaGeldikmi;
     public GameObject Gidecegiyer;
+    public Slider _Slider;
+    public GameObject GecisNoktasi;
 
     private void FixedUpdate()
     {
@@ -15,15 +18,24 @@ public class Karakter : MonoBehaviour
             transform.Translate(Vector3.forward * .5f * Time.deltaTime);
     }
 
+    private void Start()
+    {
+        float Fark = Vector3.Distance(transform.position, GecisNoktasi.transform.position);
+        _Slider.maxValue = Fark;
+    }
     void Update()
     {
         if (SonaGeldikmi)
         {
             transform.position = Vector3.Lerp(transform.position, Gidecegiyer.transform.position, .015f);
-
+            if (_Slider.value != 0)
+                _Slider.value -= .005f;
         }
         else
         {
+            float Fark = Vector3.Distance(transform.position, GecisNoktasi.transform.position);
+            _Slider.value = Fark;
+
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 if (Input.GetAxis("Mouse X") < 0)
@@ -55,7 +67,7 @@ public class Karakter : MonoBehaviour
         }
         else if (other.CompareTag("BosKarakter"))
         {
-            _GameManager.Karakterler.Add(other.gameObject);                                   
+            _GameManager.Karakterler.Add(other.gameObject);
         }
     }
 
