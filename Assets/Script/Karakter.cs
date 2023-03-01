@@ -15,8 +15,6 @@ public class Karakter : MonoBehaviour
             transform.Translate(Vector3.forward * .5f * Time.deltaTime);
     }
 
-
-
     void Update()
     {
         if (SonaGeldikmi)
@@ -54,6 +52,10 @@ public class Karakter : MonoBehaviour
             _Kamera.SonaGeldikmi = true;
             _GameManager.DusmanlariTetikle();
             SonaGeldikmi = true;
+        }
+        else if (other.CompareTag("BosKarakter"))
+        {
+            _GameManager.Karakterler.Add(other.gameObject);                                   
         }
     }
 

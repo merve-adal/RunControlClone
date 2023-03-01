@@ -13,7 +13,7 @@ public class Dusman : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     public void AnimasyonTetikle()
@@ -34,7 +34,7 @@ public class Dusman : MonoBehaviour
         if (other.CompareTag("AltKarakterler"))
         {
             Vector3 yeniPoz = new Vector3(transform.position.x, .23f, transform.position.z);
-            _Gamemanager.YokOlmaEfektiOlustur(yeniPoz,false,true);
+            _Gamemanager.YokOlmaEfektiOlustur(yeniPoz, false, true);
             gameObject.SetActive(false);
         }
     }

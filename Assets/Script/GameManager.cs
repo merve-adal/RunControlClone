@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (var item in Dusmanlar)
         {
-            if(item.activeInHierarchy)
+            if (item.activeInHierarchy)
             {
                 item.GetComponent<Dusman>().AnimasyonTetikle();
             }
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
 
     }
-   
+
     void SavasDurumu()
     {
         if (SonaGeldikmi)
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
                 }
 
             }
-        }    
+        }
     }
 
     public void AdamYonetimi(string islemturu, int GelenSayi, Transform Pozisyon)
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void YokOlmaEfektiOlustur(Vector3 Pozisyon,bool Balyoz=false, bool Durum=false)
+    public void YokOlmaEfektiOlustur(Vector3 Pozisyon, bool Balyoz = false, bool Durum = false)
     {
         foreach (var item in YokOlmaEfektleri)
         {
@@ -126,8 +126,8 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        
-        if(Balyoz)
+
+        if (Balyoz)
         {
             Vector3 yeniPoz = new Vector3(Pozisyon.x, .005f, Pozisyon.z);
             foreach (var item in AdamLekesiEfektleri)
@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-    if (!OyunBittimi)
-        SavasDurumu();
+        if (!OyunBittimi)
+            SavasDurumu();
     }
 }
