@@ -18,9 +18,14 @@ public class GameManager : MonoBehaviour
     public bool OyunBittimi;
     bool SonaGeldikmi;
 
+    Matematiksel_islemler _Matematiksel_islemler = new Matematiksel_islemler();
+    BellekYonetim _BellekYonetim = new BellekYonetim();
+
     void Start()
     {
         DusmanlariOlustur();
+
+        Debug.Log(_BellekYonetim.VeriOku_i("Puan"));
     }
 
     public void DusmanlariOlustur()
@@ -80,6 +85,10 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
+                    if (AnlikKarakterSayisi > 5)
+                        _BellekYonetim.VeriKaydet_int("Puan", _BellekYonetim.VeriOku_i("Puan") + 600);
+                    else
+                        _BellekYonetim.VeriKaydet_int("Puan", _BellekYonetim.VeriOku_i("Puan") + 200);
                     Debug.Log("Kazandýn");
                 }
 
@@ -92,20 +101,20 @@ public class GameManager : MonoBehaviour
         switch (islemturu)
         {
             case "Carpma":
-                Matematiksel_islemler.Carpma(GelenSayi, Karakterler, Pozisyon, OlusmaEfektleri);
+                _Matematiksel_islemler.Carpma(GelenSayi, Karakterler, Pozisyon, OlusmaEfektleri);
                 break;
 
             case "Toplama":
-                Matematiksel_islemler.Toplama(GelenSayi, Karakterler, Pozisyon, OlusmaEfektleri);
+                _Matematiksel_islemler.Toplama(GelenSayi, Karakterler, Pozisyon, OlusmaEfektleri);
                 break;
 
 
             case "Cikartma":
-                Matematiksel_islemler.Cikartma(GelenSayi, Karakterler, YokOlmaEfektleri);
+                _Matematiksel_islemler.Cikartma(GelenSayi, Karakterler, YokOlmaEfektleri);
                 break;
 
             case "Bolme":
-                Matematiksel_islemler.Bolme(GelenSayi, Karakterler, YokOlmaEfektleri);
+                _Matematiksel_islemler.Bolme(GelenSayi, Karakterler, YokOlmaEfektleri);
                 break;
         }
     }
