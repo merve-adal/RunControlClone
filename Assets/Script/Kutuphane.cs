@@ -270,5 +270,14 @@ namespace Merve
             return PlayerPrefs.GetFloat(Key);
         }
 
+        public void KontrolEtveTanimla()
+        {
+            if (!PlayerPrefs.HasKey("SonLevel"))
+            {
+                PlayerPrefs.SetInt("SonLevel", 5);
+                PlayerPrefs.SetInt("Puan", 100);
+            }
+        }
+
     }
 }
