@@ -15,24 +15,31 @@ public class Level_Manager : MonoBehaviour
 
     void Start()
     {
-        _BellekYonetim.VeriKaydet_int("SonLevel", Level);
 
         int mevcutLevel = _BellekYonetim.VeriOku_i("SonLevel") - 4;
 
+        int Index = 1;
         for (int i = 0; i < Butonlar.Length; i++)
         {
-            if (i + 1 <= mevcutLevel)
+            if (Index <= mevcutLevel)
             {
-                Butonlar[i].GetComponentInChildren<Text>().text = (i + 1).ToString();
-                //  int Index = i + 1;
+                Butonlar[i].GetComponentInChildren<Text>().text = Index.ToString();
+                int SahneIndex = Index + 4;
+                Butonlar[i].onClick.AddListener(delegate { SahneYukle(SahneIndex); });
 
             }
             else
             {
                 Butonlar[i].GetComponent<Image>().sprite = KilitButon;
-
+                Butonlar[i].enabled = false;
             }
+            Index++;
         }
+    }
+
+    public void SahneYukle(int Index)
+    {
+      SceneManager.LoadScene(Index);
     }
 
     public void GeriDon()

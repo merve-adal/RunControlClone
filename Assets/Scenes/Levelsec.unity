@@ -1654,7 +1654,7 @@ MonoBehaviour:
   - {fileID: 778041261}
   - {fileID: 646146290}
   - {fileID: 837152455}
-  Level: 8
+  Level: 15
   KilitButon: {fileID: 21300000, guid: b13bd5e7f9c0d4a47a7e551556bc4ab1, type: 3}
 --- !u!4 &709590187
 Transform:
