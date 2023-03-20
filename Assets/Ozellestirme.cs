@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Merve;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class Ozellestirme : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class Ozellestirme : MonoBehaviour
 
     BellekYonetim _BellekYonetim = new BellekYonetim();
 
+    public List<ItemBilgileri> _ItemBilgileri = new List<ItemBilgileri>();
+
     void Start()
     {
         _BellekYonetim.VeriKaydet_int("AktifSapka", -1);
@@ -38,6 +42,32 @@ public class Ozellestirme : MonoBehaviour
         {
             SapkaIndex = _BellekYonetim.VeriOku_i("AktifSapka");
             Sapkalar[SapkaIndex].SetActive(true);
+        }
+
+        Load();
+       // Save();
+    }
+
+    public void Save()
+    {
+        _ItemBilgileri[1].SatinAlmaDurumu = false;
+        _ItemBilgileri.Add(new ItemBilgileri());
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/ItemVerileri.gd");
+        bf.Serialize(file, _ItemBilgileri);
+        file.Close();
+    }
+
+    public void Load()
+    {
+        if(File.Exists(Application.persistentDataPath + "/ItemVerileri.gd"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/ItemVerileri.gd", FileMode.Open);
+            _ItemBilgileri = (List<ItemBilgileri>)bf.Deserialize(file);
+            file.Close();
+
+            Debug.Log(_ItemBilgileri[1].SatinAlmaDurumu);
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Merve
 {
@@ -280,4 +281,23 @@ namespace Merve
         }
 
     }
+
+    public class Verilerimiz
+    {
+
+        public static List<ItemBilgileri> _ItemBilgileri = new List<ItemBilgileri>();
+
+    }
+
+    [Serializable]
+
+    public class ItemBilgileri
+    {
+        public int GrupIndex;
+        public int Item_Index;
+        public string Item_Ad;
+        public int Puan;
+        public bool SatinAlmaDurumu;
+    }
+
 }

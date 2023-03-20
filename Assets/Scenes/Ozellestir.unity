@@ -1187,6 +1187,7 @@ MonoBehaviour:
   - {fileID: 919132147898784274}
   - {fileID: 919132147566913359}
   Materyaller: []
+  _ItemBilgileri: []
 --- !u!4 &1131149874
 Transform:
   m_ObjectHideFlags: 0
