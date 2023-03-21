@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Merve
 {
@@ -298,6 +300,48 @@ namespace Merve
         public string Item_Ad;
         public int Puan;
         public bool SatinAlmaDurumu;
+    }
+
+    public class VeriYonetimi
+    {
+        public void Save(List<ItemBilgileri> _ItemBilgileri)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.OpenWrite(Application.persistentDataPath + "/ItemVerileri.gd");
+            bf.Serialize(file, _ItemBilgileri);
+            file.Close();
+        }
+
+        List<ItemBilgileri> _ItemicListe;
+
+        public void Load()
+        {
+            if (File.Exists(Application.persistentDataPath + "/ItemVerileri.gd"))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(Application.persistentDataPath + "/ItemVerileri.gd", FileMode.Open);
+                _ItemicListe = (List<ItemBilgileri>)bf.Deserialize(file);
+                file.Close();
+
+            }
+        }
+
+        public List<ItemBilgileri> ListeyiAktar()
+        {
+            return _ItemicListe;
+        }
+
+
+        public void ilkKurulumDosyaOlusturma(List<ItemBilgileri> _ItemBilgileri)
+        {
+            if (!File.Exists(Application.persistentDataPath + "/ItemVerileri.gd"))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Create(Application.persistentDataPath + "/ItemVerileri.gd");
+                bf.Serialize(file, _ItemBilgileri);
+                file.Close();
+            }
+        }
     }
 
 }

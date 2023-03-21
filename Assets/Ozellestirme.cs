@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Merve;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 public class Ozellestirme : MonoBehaviour
 {
@@ -22,6 +20,8 @@ public class Ozellestirme : MonoBehaviour
     int SapkaIndex = -1;
 
     BellekYonetim _BellekYonetim = new BellekYonetim();
+    VeriYonetimi _VeriYonetim = new VeriYonetimi();
+
 
     public List<ItemBilgileri> _ItemBilgileri = new List<ItemBilgileri>();
 
@@ -44,32 +44,15 @@ public class Ozellestirme : MonoBehaviour
             Sapkalar[SapkaIndex].SetActive(true);
         }
 
-        Load();
-       // Save();
+
+      //  _VeriYonetim.Save(_ItemBilgileri);
+
+        _VeriYonetim.Load();
+        _ItemBilgileri = _VeriYonetim.ListeyiAktar();  
+
     }
 
-    public void Save()
-    {
-        _ItemBilgileri[1].SatinAlmaDurumu = false;
-        _ItemBilgileri.Add(new ItemBilgileri());
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/ItemVerileri.gd");
-        bf.Serialize(file, _ItemBilgileri);
-        file.Close();
-    }
 
-    public void Load()
-    {
-        if(File.Exists(Application.persistentDataPath + "/ItemVerileri.gd"))
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/ItemVerileri.gd", FileMode.Open);
-            _ItemBilgileri = (List<ItemBilgileri>)bf.Deserialize(file);
-            file.Close();
-
-            Debug.Log(_ItemBilgileri[1].SatinAlmaDurumu);
-        }
-    }
 
     public void Sapka_Yonbutonlari(string islem)
     {
@@ -80,12 +63,14 @@ public class Ozellestirme : MonoBehaviour
             {
                 SapkaIndex = 0;
                 Sapkalar[SapkaIndex].SetActive(true);
+                SapkaText.text=_ItemBilgileri[SapkaIndex].Item_Ad;
             }
             else
             {
                 Sapkalar[SapkaIndex].SetActive(false);
                 SapkaIndex++;
                 Sapkalar[SapkaIndex].SetActive(true);
+                SapkaText.text = _ItemBilgileri[SapkaIndex].Item_Ad;
             }
 
             //-------------------------------------------------
@@ -109,17 +94,19 @@ public class Ozellestirme : MonoBehaviour
                 {
                     Sapkalar[SapkaIndex].SetActive(true);
                     SapkaButonlari[0].interactable = true;
+                    SapkaText.text = _ItemBilgileri[SapkaIndex].Item_Ad;
                 }
                 else
                 {
                     SapkaButonlari[0].interactable = false;
+                    SapkaText.text = "Þapka yok";
                 }
-
 
             }
             else
             {
                 SapkaButonlari[0].interactable = false;
+                SapkaText.text = "Þapka yok";
             }
 
             //-------------------------------------------------

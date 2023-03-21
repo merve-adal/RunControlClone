@@ -8,11 +8,14 @@ using Merve;
 public class AnaMenu_Manager : MonoBehaviour
 {
     BellekYonetim _Bellekyonetim = new BellekYonetim();
+    VeriYonetimi _Veriyonetim = new VeriYonetimi();
     public GameObject CikisPaneli;
+    public List<ItemBilgileri> _ItemBilgileri = new List<ItemBilgileri>();
 
     void Start()
     {
         _Bellekyonetim.KontrolEtveTanimla();
+       // _Veriyonetim.ilkKurulumDosyaOlusturma(_ItemBilgileri);
     }
 
     public void SahneYukle(int Index)
