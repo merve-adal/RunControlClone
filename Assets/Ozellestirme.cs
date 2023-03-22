@@ -8,6 +8,10 @@ public class Ozellestirme : MonoBehaviour
 {
     public Text PuanText;
     public Text SapkaText;
+    public GameObject[] islemPanelleri;
+    public GameObject islemCanvasi;
+    public GameObject[] GenelObjeler;
+    int AktifislemPaneliIndex;
     [Header("SAPKALAR")]
     public GameObject[] Sapkalar;
     public Button[] SapkaButonlari;
@@ -114,5 +118,22 @@ public class Ozellestirme : MonoBehaviour
             if (SapkaIndex != Sapkalar.Length - 1)
                 SapkaButonlari[1].interactable = true;
         }
+    }
+
+    public void islemPaneliCikart(int Index)
+    {
+        GenelObjeler[2].SetActive(true);
+        AktifislemPaneliIndex = Index;
+        islemPanelleri[Index].SetActive(true);
+        GenelObjeler[3].SetActive(true);
+        islemCanvasi.SetActive(false);      
+    }
+
+    public void GeriDon()
+    {
+        GenelObjeler[2].SetActive(false);
+        islemCanvasi.SetActive(true);
+        GenelObjeler[3].SetActive(false);
+        islemPanelleri[AktifislemPaneliIndex].SetActive(false);
     }
 }
