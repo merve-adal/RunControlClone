@@ -283,7 +283,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1131149873}
         m_TargetAssemblyTypeName: Ozellestirme, Assembly-CSharp
-        m_MethodName: Sapka_Yonbutonlari
+        m_MethodName: Material_Yonbutonlari
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1848,7 +1848,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1131149873}
         m_TargetAssemblyTypeName: Ozellestirme, Assembly-CSharp
-        m_MethodName: Sapka_Yonbutonlari
+        m_MethodName: Sopa_Yonbutonlari
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2771,7 +2771,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1131149873}
         m_TargetAssemblyTypeName: Ozellestirme, Assembly-CSharp
-        m_MethodName: Sapka_Yonbutonlari
+        m_MethodName: Material_Yonbutonlari
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2983,7 +2983,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuanText: {fileID: 982885679}
-  SapkaText: {fileID: 549393892}
   islemPanelleri:
   - {fileID: 1547856196}
   - {fileID: 194191621}
@@ -3001,11 +3000,26 @@ MonoBehaviour:
   SapkaButonlari:
   - {fileID: 1327253841}
   - {fileID: 1053048404}
+  SapkaText: {fileID: 549393892}
   Sopalar:
   - {fileID: 919132149269706731}
   - {fileID: 919132147898784274}
   - {fileID: 919132147566913359}
-  Materyaller: []
+  SopaButonlari:
+  - {fileID: 655389385}
+  - {fileID: 1141373364}
+  SopaText: {fileID: 1593327594}
+  Materyaller:
+  - {fileID: 2100000, guid: 9fdc05818256c364eb8b9309cbc04b6e, type: 2}
+  - {fileID: 2100000, guid: 27f9fc959f10b5842a74c37584f1d54d, type: 2}
+  - {fileID: 2100000, guid: a0951412f5adaff4588ee1802d232958, type: 2}
+  - {fileID: 2100000, guid: 7744c773341b67547a0b98513017f339, type: 2}
+  VarsayilanTema: {fileID: 2100000, guid: 1c6a1a7adaf94c44a83af9c4a87fbe8f, type: 2}
+  MateryalButonlari:
+  - {fileID: 1012622511}
+  - {fileID: 58435149}
+  MaterialText: {fileID: 494201545}
+  _Renderer: {fileID: 1902989191021282228}
   _ItemBilgileri: []
 --- !u!4 &1131149874
 Transform:
@@ -3182,7 +3196,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1131149873}
         m_TargetAssemblyTypeName: Ozellestirme, Assembly-CSharp
-        m_MethodName: Sapka_Yonbutonlari
+        m_MethodName: Sopa_Yonbutonlari
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

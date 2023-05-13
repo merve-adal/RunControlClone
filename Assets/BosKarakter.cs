@@ -75,6 +75,7 @@ public class BosKarakter : MonoBehaviour
         mats[0] = AtanacakOlanMateryal;
         _Renderer.materials = mats;
         _Animator.SetBool("Saldir", true);
+
         gameObject.tag = "AltKarakterler";
         GameManager.AnlikKarakterSayisi++;
         Debug.Log(GameManager.AnlikKarakterSayisi);
