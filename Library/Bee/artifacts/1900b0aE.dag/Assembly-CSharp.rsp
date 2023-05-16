@@ -351,6 +351,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/AdamLekesi.cs"
 "Assets/AnaMenu_Manager.cs"
+"Assets/Animatoricin.cs"
 "Assets/BosKarakter.cs"
 "Assets/Level_Manager.cs"
 "Assets/Modeller/DenizVeAda/Scripts/LowPolyWater.cs"
