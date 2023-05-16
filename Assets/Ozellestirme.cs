@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Merve;
+using TMPro;
 
 public class Ozellestirme : MonoBehaviour
 {
     public Text PuanText;
     public GameObject[] islemPanelleri;
     public GameObject islemCanvasi;
-    public GameObject[] GenelObjeler;
+    public GameObject[] GenelPaneller;
+    public Button[] islemButonlari;
+    public TextMeshProUGUI SatinAlmaText;
     int AktifislemPaneliIndex;
     [Header("-------SAPKALAR")]
     public GameObject[] Sapkalar;
@@ -41,6 +44,8 @@ public class Ozellestirme : MonoBehaviour
         _BellekYonetim.VeriKaydet_int("AktifSapka", -1);
         _BellekYonetim.VeriKaydet_int("AktifSopa", -1);
         _BellekYonetim.VeriKaydet_int("AktifTema", -1);
+      //  _BellekYonetim.VeriKaydet_int("Puan", 1500);
+        PuanText.text = _BellekYonetim.VeriOku_i("Puan").ToString();
         #region
         if (_BellekYonetim.VeriOku_i("AktifSapka") == -1)
         {
@@ -93,6 +98,30 @@ public class Ozellestirme : MonoBehaviour
         _VeriYonetim.Load();
         _ItemBilgileri = _VeriYonetim.ListeyiAktar();  
 
+    }
+
+    public void SatinAl()
+    {
+        if(AktifislemPaneliIndex!=-1)
+        {
+            switch(AktifislemPaneliIndex)
+            {
+                case 0:
+                    Debug.Log("Bölüm no: " + AktifislemPaneliIndex + " Item Index " + SapkaIndex + "Item Ad" + _ItemBilgileri[SapkaIndex].Item_Ad);
+                    break;
+                case 1:
+                    Debug.Log("Bölüm no: " + AktifislemPaneliIndex + " Item Index " + SopaIndex + "Item Ad" + _ItemBilgileri[SopaIndex + 3].Item_Ad);
+                    break;
+                case 2:
+                    Debug.Log("Bölüm no: " + AktifislemPaneliIndex + " Item Index " + MaterialIndex + "Item Ad" + _ItemBilgileri[MaterialIndex + 6].Item_Ad);
+                    break;
+            }
+        }
+    }
+
+    public void Kaydet()
+    {
+        Debug.Log(AktifislemPaneliIndex);
     }
 
     public void Sapka_Yonbutonlari(string islem)
@@ -298,18 +327,19 @@ public class Ozellestirme : MonoBehaviour
 
     public void islemPaneliCikart(int Index)
     {
-        GenelObjeler[2].SetActive(true);
+        GenelPaneller[0].SetActive(true);
         AktifislemPaneliIndex = Index;
         islemPanelleri[Index].SetActive(true);
-        GenelObjeler[3].SetActive(true);
+        GenelPaneller[1].SetActive(true);
         islemCanvasi.SetActive(false);      
     }
 
     public void GeriDon()
     {
-        GenelObjeler[2].SetActive(false);
+        GenelPaneller[0].SetActive(false);
         islemCanvasi.SetActive(true);
-        GenelObjeler[3].SetActive(false);
+        GenelPaneller[1].SetActive(false);
         islemPanelleri[AktifislemPaneliIndex].SetActive(false);
+        AktifislemPaneliIndex = -1;
     }
 }

@@ -2328,7 +2328,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 845021020}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1131149873}
+        m_TargetAssemblyTypeName: Ozellestirme, Assembly-CSharp
+        m_MethodName: Kaydet
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &845021020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2988,11 +3000,13 @@ MonoBehaviour:
   - {fileID: 194191621}
   - {fileID: 1881312474}
   islemCanvasi: {fileID: 1288959484}
-  GenelObjeler:
-  - {fileID: 1703728787}
-  - {fileID: 845021017}
+  GenelPaneller:
   - {fileID: 685906094}
   - {fileID: 1955706765}
+  islemButonlari:
+  - {fileID: 1703728789}
+  - {fileID: 845021019}
+  SatinAlmaText: {fileID: 370429078}
   Sapkalar:
   - {fileID: 919132149396649273}
   - {fileID: 919132149235300456}
@@ -4680,7 +4694,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1703728790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1131149873}
+        m_TargetAssemblyTypeName: Ozellestirme, Assembly-CSharp
+        m_MethodName: SatinAl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1703728790
 MonoBehaviour:
   m_ObjectHideFlags: 0
