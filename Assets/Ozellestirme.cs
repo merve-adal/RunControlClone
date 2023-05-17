@@ -44,8 +44,6 @@ public class Ozellestirme : MonoBehaviour
 
     void Start()
     {
-
-        //   _BellekYonetim.VeriKaydet_int("Puan", 6400);
         PuanText.text = _BellekYonetim.VeriOku_i("Puan").ToString();
 
         _VeriYonetim.Load();

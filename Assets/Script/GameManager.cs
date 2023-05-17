@@ -17,15 +17,26 @@ public class GameManager : MonoBehaviour
     public GameObject _AnaKarakter;
     public bool OyunBittimi;
     bool SonaGeldikmi;
+    [Header("-------SAPKALAR")]
+    public GameObject[] Sapkalar;
+    [Header("-------SOPALAR")]
+    public GameObject[] Sopalar;
+    [Header("-------MATERYALLER")]
+    public Material[] Materyaller;
+    public SkinnedMeshRenderer _Renderer;
+    public Material VarsayilanTema;
 
     Matematiksel_islemler _Matematiksel_islemler = new Matematiksel_islemler();
     BellekYonetim _BellekYonetim = new BellekYonetim();
 
+    private void Awake()
+    {
+        ItemleriKontrolEt();
+    }
+
     void Start()
     {
         DusmanlariOlustur();
-
-        Debug.Log(_BellekYonetim.VeriOku_i("Puan"));
     }
 
     public void DusmanlariOlustur()
@@ -160,5 +171,27 @@ public class GameManager : MonoBehaviour
 
         if (!OyunBittimi)
             SavasDurumu();
+    }
+
+    public void ItemleriKontrolEt()
+    {
+        if (_BellekYonetim.VeriOku_i("AktifSapka") != -1)
+            Sapkalar[_BellekYonetim.VeriOku_i("AktifSapka")].SetActive(true);
+
+        if (_BellekYonetim.VeriOku_i("AktifSopa") != -1)
+            Sopalar[_BellekYonetim.VeriOku_i("AktifSopa")].SetActive(true);
+
+        if (_BellekYonetim.VeriOku_i("AktifTema") != -1)
+        {
+            Material[] mats = _Renderer.materials;
+            mats[0] = Materyaller[_BellekYonetim.VeriOku_i("AktifTema")];
+            _Renderer.materials = mats;
+        }
+        else
+        {
+            Material[] mats = _Renderer.materials;
+            mats[0] = VarsayilanTema;
+            _Renderer.materials = mats;
+        }
     }
 }

@@ -15,7 +15,7 @@ public class AnaMenu_Manager : MonoBehaviour
     void Start()
     {
         _Bellekyonetim.KontrolEtveTanimla();
-       // _Veriyonetim.ilkKurulumDosyaOlusturma(_ItemBilgileri);
+        _Veriyonetim.ilkKurulumDosyaOlusturma(_ItemBilgileri);
     }
 
     public void SahneYukle(int Index)
