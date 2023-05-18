@@ -11,6 +11,7 @@ public class AnaMenu_Manager : MonoBehaviour
     VeriYonetimi _Veriyonetim = new VeriYonetimi();
     public GameObject CikisPaneli;
     public List<ItemBilgileri> _ItemBilgileri = new List<ItemBilgileri>();
+    public AudioSource ButonSes;
 
     void Start()
     {
@@ -20,17 +21,19 @@ public class AnaMenu_Manager : MonoBehaviour
 
     public void SahneYukle(int Index)
     {
+        ButonSes.Play();
         SceneManager.LoadScene(Index);
     }
 
     public void Oyna()
     {
+        ButonSes.Play();
         SceneManager.LoadScene(_Bellekyonetim.VeriOku_i("SonLevel"));
-
     }
 
     public void CikisButonislem(string durum)
     {
+        ButonSes.Play();
         if (durum == "Evet")
             Application.Quit();
         else if (durum == "cikis")

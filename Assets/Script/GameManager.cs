@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Destroy(GameObject.FindWithTag("MenuSes"));
         ItemleriKontrolEt();
     }
 

@@ -354,6 +354,7 @@
 "Assets/Animatoricin.cs"
 "Assets/BosKarakter.cs"
 "Assets/Level_Manager.cs"
+"Assets/MenuSes.cs"
 "Assets/Modeller/DenizVeAda/Scripts/LowPolyWater.cs"
 "Assets/Ozellestirme.cs"
 "Assets/Pervane.cs"

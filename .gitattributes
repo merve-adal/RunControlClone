@@ -1,0 +1,2 @@
+Assets/Sesler/* filter=lfs diff=lfs merge=lfs -text
+Assets/Sesler/AnaMenu/menumusic.mp3 filter=lfs diff=lfs merge=lfs -text

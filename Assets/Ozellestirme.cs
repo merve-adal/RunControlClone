@@ -41,6 +41,7 @@ public class Ozellestirme : MonoBehaviour
     public List<ItemBilgileri> _ItemBilgileri = new List<ItemBilgileri>();
 
     public Animator Kaydedildi_Animator;
+    public AudioSource[] Sesler;
 
     void Start()
     {
@@ -169,6 +170,7 @@ public class Ozellestirme : MonoBehaviour
 
     public void SatinAl()
     {
+        Sesler[1].Play();
         if (AktifislemPaneliIndex != -1)
         {
             switch (AktifislemPaneliIndex)
@@ -190,6 +192,7 @@ public class Ozellestirme : MonoBehaviour
 
     public void Kaydet()
     {
+        Sesler[2].Play();
         if (AktifislemPaneliIndex != -1)
         {
             switch (AktifislemPaneliIndex)
@@ -209,6 +212,7 @@ public class Ozellestirme : MonoBehaviour
 
     public void Sapka_Yonbutonlari(string islem)
     {
+        Sesler[0].Play();
         if (islem == "ileri")
         {
 
@@ -324,6 +328,7 @@ public class Ozellestirme : MonoBehaviour
 
     public void Sopa_Yonbutonlari(string islem)
     {
+        Sesler[0].Play();
         if (islem == "ileri")
         {
 
@@ -439,6 +444,7 @@ public class Ozellestirme : MonoBehaviour
 
     public void Material_Yonbutonlari(string islem)
     {
+        Sesler[0].Play();
         if (islem == "ileri")
         {
 
@@ -568,6 +574,7 @@ public class Ozellestirme : MonoBehaviour
 
     public void islemPaneliCikart(int Index)
     {
+        Sesler[0].Play();
         DurumuKontrolEt(Index);
         GenelPaneller[0].SetActive(true);
         AktifislemPaneliIndex = Index;
@@ -578,6 +585,7 @@ public class Ozellestirme : MonoBehaviour
 
     public void GeriDon()
     {
+        Sesler[0].Play();
         GenelPaneller[0].SetActive(false);
         islemCanvasi.SetActive(true);
         GenelPaneller[1].SetActive(false);
@@ -588,6 +596,7 @@ public class Ozellestirme : MonoBehaviour
 
     public void AnaMenuyeDon()
     {
+        Sesler[0].Play();
         _VeriYonetim.Save(_ItemBilgileri);
         SceneManager.LoadScene(0);
     }
