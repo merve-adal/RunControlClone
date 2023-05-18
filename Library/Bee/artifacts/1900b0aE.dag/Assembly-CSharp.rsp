@@ -352,6 +352,7 @@
 "Assets/AdamLekesi.cs"
 "Assets/AnaMenu_Manager.cs"
 "Assets/Animatoricin.cs"
+"Assets/Ayarlar_Manager.cs"
 "Assets/BosKarakter.cs"
 "Assets/Level_Manager.cs"
 "Assets/MenuSes.cs"
