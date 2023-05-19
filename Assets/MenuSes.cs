@@ -10,7 +10,7 @@ public class MenuSes : MonoBehaviour
 
     void Start()
     {
-     //   Ses.volume = PlayerPrefs.GetFloat("MenuSes");
+        Ses.volume = PlayerPrefs.GetFloat("MenuSes");
         DontDestroyOnLoad(gameObject);
 
         if (instance == null)
@@ -21,6 +21,6 @@ public class MenuSes : MonoBehaviour
 
     void Update()
     {
-        
+        Ses.volume = PlayerPrefs.GetFloat("MenuSes");
     }
 }

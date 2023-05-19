@@ -31,9 +31,11 @@ public class GameManager : MonoBehaviour
     BellekYonetim _BellekYonetim = new BellekYonetim();
 
     Scene _Scene;
+    public AudioSource OyunSesi;
 
     private void Awake()
     {
+        OyunSesi.volume = _BellekYonetim.VeriOku_f("OyunSes");
         Destroy(GameObject.FindWithTag("MenuSes"));
         ItemleriKontrolEt();
     }

@@ -17,6 +17,7 @@ public class AnaMenu_Manager : MonoBehaviour
     {
         _Bellekyonetim.KontrolEtveTanimla();
         _Veriyonetim.ilkKurulumDosyaOlusturma(_ItemBilgileri);
+        ButonSes.volume = _Bellekyonetim.VeriOku_f("MenuFx");
     }
 
     public void SahneYukle(int Index)

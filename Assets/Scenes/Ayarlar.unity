@@ -233,6 +233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButonSes: {fileID: 122372199}
+  MenuSes: {fileID: 651418166}
+  MenuFx: {fileID: 2099110388}
+  OyunSes: {fileID: 558391381}
 --- !u!82 &122372199
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1106,7 +1109,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 122372198}
+        m_TargetAssemblyTypeName: Ayarlar_Manager, Assembly-CSharp
+        m_MethodName: SesAyarla
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: oyunses
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &560204320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,7 +1554,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 122372198}
+        m_TargetAssemblyTypeName: Ayarlar_Manager, Assembly-CSharp
+        m_MethodName: SesAyarla
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: menuses
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &685906094
 GameObject:
   m_ObjectHideFlags: 0
@@ -4100,4 +4127,16 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 122372198}
+        m_TargetAssemblyTypeName: Ayarlar_Manager, Assembly-CSharp
+        m_MethodName: SesAyarla
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: menufx
+          m_BoolArgument: 0
+        m_CallState: 2
