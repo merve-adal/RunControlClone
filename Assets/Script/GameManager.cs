@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Merve;
 using UnityEngine.SceneManagement;
 
@@ -31,12 +32,15 @@ public class GameManager : MonoBehaviour
     BellekYonetim _BellekYonetim = new BellekYonetim();
 
     Scene _Scene;
+    [Header("------GENEL VERÝLER")]
     public AudioSource[] Sesler;
     public GameObject[] islemPanelleri;
+    public Slider OyunSesiAyar;
 
     private void Awake()
     {
         Sesler[0].volume = _BellekYonetim.VeriOku_f("OyunSes");
+        OyunSesiAyar.value = _BellekYonetim.VeriOku_f("OyunSes");
         Sesler[1].volume = _BellekYonetim.VeriOku_f("MenuFx");
         Destroy(GameObject.FindWithTag("MenuSes"));
         ItemleriKontrolEt();
@@ -234,5 +238,24 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(0);
             Time.timeScale = 1;
         }
+    }
+
+    public void Ayarlar(string durum)
+    {
+         if (durum=="ayarla")
+        {
+            islemPanelleri[1].SetActive(true);
+            Time.timeScale = 0;
+        }else
+        {
+            islemPanelleri[1].SetActive(false);
+            Time.timeScale = 1;
+        }
+    }
+
+    public void SesiAyarla()
+    {
+        _BellekYonetim.VeriKaydet_float("OyunSes", OyunSesiAyar.value);
+        Sesler[0].volume = OyunSesiAyar.value;
     }
 }
