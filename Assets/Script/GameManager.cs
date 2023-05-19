@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public AudioSource[] Sesler;
     public GameObject[] islemPanelleri;
     public Slider OyunSesiAyar;
+    public Text[] TextObjeleri;
 
     private void Awake()
     {
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
 
                 if (AnlikKarakterSayisi < KacDusmanOlsun || AnlikKarakterSayisi == KacDusmanOlsun)
                 {
-                    Debug.Log("Kaybettin");
+                    islemPanelleri[3].SetActive(true);
                 }
                 else
                 {
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour
                             _BellekYonetim.VeriKaydet_int("SonLevel", _BellekYonetim.VeriOku_i("SonLevel") + 1);
                         }
                     }
-                    Debug.Log("Kazandýn");
+                    islemPanelleri[2].SetActive(true);
                 }
             }
         }
@@ -257,5 +258,10 @@ public class GameManager : MonoBehaviour
     {
         _BellekYonetim.VeriKaydet_float("OyunSes", OyunSesiAyar.value);
         Sesler[0].volume = OyunSesiAyar.value;
+    }
+
+    public void SonrakiLevel()
+    {
+        SceneManager.LoadScene(_Scene.buildIndex + 1);
     }
 }

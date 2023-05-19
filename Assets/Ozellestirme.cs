@@ -13,7 +13,7 @@ public class Ozellestirme : MonoBehaviour
     public GameObject islemCanvasi;
     public GameObject[] GenelPaneller;
     public Button[] islemButonlari;
-    public TextMeshProUGUI SatinAlmaText;
+    public Text SatinAlmaText;
     int AktifislemPaneliIndex;
     [Header("-------SAPKALAR")]
     public GameObject[] Sapkalar;
@@ -39,6 +39,7 @@ public class Ozellestirme : MonoBehaviour
     VeriYonetimi _VeriYonetim = new VeriYonetimi();
     [Header("-------GENEL VERÝLER")]
     public List<ItemBilgileri> _ItemBilgileri = new List<ItemBilgileri>();
+    public Text[] TextObjeleri;
 
     public Animator Kaydedildi_Animator;
     public AudioSource[] Sesler;

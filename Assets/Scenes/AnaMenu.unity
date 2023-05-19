@@ -2268,7 +2268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CikisPaneli: {fileID: 134632423}
-  _ItemBilgileri:
+  _Varsayilan_ItemBilgileri:
   - GrupIndex: 1
     Item_Index: 0
     Item_Ad: Sapka 1
