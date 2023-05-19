@@ -31,11 +31,13 @@ public class GameManager : MonoBehaviour
     BellekYonetim _BellekYonetim = new BellekYonetim();
 
     Scene _Scene;
-    public AudioSource OyunSesi;
+    public AudioSource[] Sesler;
+    public GameObject[] islemPanelleri;
 
     private void Awake()
     {
-        OyunSesi.volume = _BellekYonetim.VeriOku_f("OyunSes");
+        Sesler[0].volume = _BellekYonetim.VeriOku_f("OyunSes");
+        Sesler[1].volume = _BellekYonetim.VeriOku_f("MenuFx");
         Destroy(GameObject.FindWithTag("MenuSes"));
         ItemleriKontrolEt();
     }
@@ -206,6 +208,31 @@ public class GameManager : MonoBehaviour
             Material[] mats = _Renderer.materials;
             mats[0] = VarsayilanTema;
             _Renderer.materials = mats;
+        }
+    }
+
+    public void CikisButonislem(string durum)
+    {
+        Sesler[1].Play();
+        Time.timeScale = 0;
+        if (durum == "durdur")
+        {
+            islemPanelleri[0].SetActive(true);
+        }
+        else if (durum == "devamet")
+        {
+            islemPanelleri[0].SetActive(false);
+            Time.timeScale = 1;
+        }
+        else if (durum == "tekrar")
+        {
+            SceneManager.LoadScene(_Scene.buildIndex);
+            Time.timeScale = 1;
+        }
+        else if (durum == "Anasayfa")
+        {
+            SceneManager.LoadScene(0);
+            Time.timeScale = 1;
         }
     }
 }
