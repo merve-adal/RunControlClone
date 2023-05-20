@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Merve;
 
@@ -12,6 +13,8 @@ public class AnaMenu_Manager : MonoBehaviour
     public GameObject CikisPaneli;
     public List<ItemBilgileri> _Varsayilan_ItemBilgileri = new List<ItemBilgileri>();
     public AudioSource ButonSes;
+    public GameObject YuklemeEkrani;
+    public Slider YuklemeSlider;
 
     void Start()
     {
@@ -29,7 +32,22 @@ public class AnaMenu_Manager : MonoBehaviour
     public void Oyna()
     {
         ButonSes.Play();
-        SceneManager.LoadScene(_Bellekyonetim.VeriOku_i("SonLevel"));
+
+        StartCoroutine(LoadAsync(_Bellekyonetim.VeriOku_i("SonLevel")));
+    }
+
+    IEnumerator LoadAsync(int SceneIndex)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneIndex);
+
+        YuklemeEkrani.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            YuklemeSlider.value = progress;
+            yield return null;
+        }
     }
 
     public void CikisButonislem(string durum)

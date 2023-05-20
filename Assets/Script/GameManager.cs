@@ -36,7 +36,9 @@ public class GameManager : MonoBehaviour
     public AudioSource[] Sesler;
     public GameObject[] islemPanelleri;
     public Slider OyunSesiAyar;
-    public Text[] TextObjeleri;
+
+    public GameObject YuklemeEkrani;
+    public Slider YuklemeSlider;
 
     private void Awake()
     {
@@ -243,11 +245,12 @@ public class GameManager : MonoBehaviour
 
     public void Ayarlar(string durum)
     {
-         if (durum=="ayarla")
+        if (durum == "ayarla")
         {
             islemPanelleri[1].SetActive(true);
             Time.timeScale = 0;
-        }else
+        }
+        else
         {
             islemPanelleri[1].SetActive(false);
             Time.timeScale = 1;
@@ -262,6 +265,20 @@ public class GameManager : MonoBehaviour
 
     public void SonrakiLevel()
     {
-        SceneManager.LoadScene(_Scene.buildIndex + 1);
+        StartCoroutine(LoadAsync(_Scene.buildIndex + 1));
+    }
+
+    IEnumerator LoadAsync(int SceneIndex)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneIndex);
+
+        YuklemeEkrani.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            YuklemeSlider.value = progress;
+            yield return null;
+        }
     }
 }

@@ -14,6 +14,9 @@ public class Level_Manager : MonoBehaviour
     BellekYonetim _BellekYonetim = new BellekYonetim();
     public AudioSource ButonSes;
 
+    public GameObject YuklemeEkrani;
+    public Slider YuklemeSlider;
+
     void Start()
     {
         ButonSes.volume = _BellekYonetim.VeriOku_f("MenuFx");
@@ -42,7 +45,21 @@ public class Level_Manager : MonoBehaviour
     public void SahneYukle(int Index)
     {
         ButonSes.Play();
-        SceneManager.LoadScene(Index);
+        StartCoroutine(LoadAsync(Index));
+    }
+
+    IEnumerator LoadAsync(int SceneIndex)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneIndex);
+
+        YuklemeEkrani.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            YuklemeSlider.value = progress;
+            yield return null;
+        }
     }
 
     public void GeriDon()
